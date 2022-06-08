@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: qiyuesuo-container
-        image: qiyuesuo.azurecr.io/qiyuesuo:latest
+        image: echopdevecwur.azurecr.cn/single:latest
         ports:
         - containerPort: 5701
         - containerPort: 9180

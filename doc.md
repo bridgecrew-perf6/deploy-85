@@ -1,5 +1,10 @@
 # doc
 
+# download
+```
+curl -o qiyuesuo.package.BJBMW.20220606.tar.gz https://qiyuesuo-plm.obs.cn-east-3.myhuaweicloud.com:443/projects/BJBMW/qiyuesuo.package.BJBMW.20220606.tar.gz?AccessKeyId=JHII6IQQ9JLKYP5SGBVO&Expires=1654683891&Signature=5pJtlmORk4VTmeejcg9GuGqGClw%3D
+```
+
 # login registry
 ```
 az acr login --name echopdevecwur.azurecr.cn

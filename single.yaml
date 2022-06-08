@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qiyuesuo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qiyuesuo-pod
+  template:
+    metadata:
+      labels:
+        app: qiyuesuo-pod
+    spec:
+      containers:
+      - name: qiyuesuo-container
+        image: qiyuesuo.azurecr.io/qiyuesuo:latest
+        ports:
+        - containerPort: 5701
+        - containerPort: 9180
+        - containerPort: 9181
+        - containerPort: 9182
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qiyuesuo-service  
+spec:
+  selector:
+    app: qiyuesuo-pod
+  type: ClusterIP
+  ports:
+  - port: 5701
+    name: hazelcast
+    targetPort: 5701
+  - port: 9180
+    name: open
+    targetPort: 9180
+  - port: 9181
+    name: oss
+    targetPort: 9181
+  - port: 9182
+    name: sign
+    targetPort: 9182

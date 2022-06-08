@@ -21,8 +21,10 @@ docker push echopdevecwur.azurecr.cn/single
 ```
 
 # deploy
+```
 kubectl apply -f single.yaml --namespace bmw
 kubectl delete -f single.yaml --namespace bmw
+```
 
 az acr check-health --name <myregistry> --ignore-errors --yes
 az acr check-health --name qiyuesuo.azurecr.io --ignore-errors --yes

@@ -25,8 +25,13 @@ docker push qiyuesuo.azurecr.io/single
 
 # deploy
 ```
-kubectl apply -f single.yaml --namespace bmw
-kubectl delete -f single.yaml --namespace bmw
+kubectl apply -f oss.yaml --namespace bmw
+kubectl delete -f oss.yaml --namespace bmw
+```
+
+# ingress
+```
+kubectl apply -f oss-ingress.yaml -namespace bmw
 ```
 
 az acr check-health --name <myregistry> --ignore-errors --yes

@@ -20,4 +20,4 @@ COPY qiyuesuo /opt/qiyuesuo
 
 # VOLUME /opt/qiyuesuo/
 EXPOSE 5701 9000 9180 9181 9182
-ENTRYPOINT ["/opt/qiyuesuo/bin/entrypoint.sh"]
+#ENTRYPOINT ["/opt/qiyuesuo/bin/entrypoint.sh"]

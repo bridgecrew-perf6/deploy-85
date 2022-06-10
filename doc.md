@@ -30,3 +30,12 @@ kubectl delete -f single.yaml --namespace bmw
 
 az acr check-health --name <myregistry> --ignore-errors --yes
 az acr check-health --name qiyuesuo.azurecr.io --ignore-errors --yes
+
+# cmd
+
+java -Xms512m -Xmx768m -XX:+PrintGCDetails -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -XX:+PrintGCDateStamps -XX:-OmitStackTraceInFastThrow -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -Dqiyuesuo.logdir=/opt/qiyuesuo/logs -Dqiyuesuo.cluster.members=127.0.0.1 -jar /opt/qiyuesuo/privoss.jar
+
+# test
+
+eocker run --name qiyuesuo -itd qiyuesuo.azurecr.io/single bash
+docker exec -it qiyuesuo /bin/bash

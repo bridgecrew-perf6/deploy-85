@@ -31,7 +31,7 @@ kubectl delete -f oss.yaml --namespace bmw
 
 # ingress
 ```
-kubectl apply -f oss-ingress.yaml -namespace bmw
+kubectl apply -f oss-ingress.yaml --namespace bmw
 ```
 
 az acr check-health --name <myregistry> --ignore-errors --yes

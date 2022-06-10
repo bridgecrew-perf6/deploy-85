@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: echop-oss.bmwgroup.com
+    - host: oss.echopdev.echop-dev.azurechina.cloud.bmw
       http:
         paths:
           - path: /

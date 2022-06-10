@@ -54,3 +54,6 @@ eocker run --name qiyuesuo -itd qiyuesuo.azurecr.io/single bash
 docker exec -it qiyuesuo /bin/bash
 
 kubectl exec -it -n bmw oss-pod -- /bin/bash
+
+	
+curl http://10.86.26.134 -H "X-Forwarded-For: 1.1.1.1" -H "Host: oss.echopdev.echop-dev.azurechina.cloud.bmw"

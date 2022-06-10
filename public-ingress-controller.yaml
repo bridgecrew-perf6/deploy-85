@@ -2,6 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: ingress
+  namespace: kube-devops
 rules:
   - apiGroups:
       - ""
@@ -38,6 +39,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-ingress-controller-public
+  namespace: kube-devops
 spec:
   revisionHistoryLimit: 2
   replicas: 2
@@ -140,6 +142,7 @@ apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   name: public
+  namespace: kube-devops
 spec:
   controller: k8s.io/ingress-nginx
 ---
@@ -147,6 +150,7 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: nginx-ingress-controller-public
+  namespace: kube-devops
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -172,6 +176,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginx-ingress-controller-public
+  namespace: kube-devops
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     prometheus.io/port: "10254"

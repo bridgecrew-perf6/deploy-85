@@ -5,12 +5,13 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-  - http:
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: oss-service
-              port:
-                number: 9181
+    - host: echop-oss.bmwgroup.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: oss-service
+                port:
+                  number: 9181

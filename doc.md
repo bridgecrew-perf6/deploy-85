@@ -52,3 +52,5 @@ java -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -Dspring.profiles.active=producti
 
 eocker run --name qiyuesuo -itd qiyuesuo.azurecr.io/single bash
 docker exec -it qiyuesuo /bin/bash
+
+kubectl exec -it -n bmw oss-pod -- /bin/bash

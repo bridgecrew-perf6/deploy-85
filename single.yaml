@@ -15,6 +15,21 @@ spec:
       containers:
       - name: qiyuesuo-container
         image: echopdevecwur.azurecr.cn/single:latest
+        command: ["java"]
+        args:
+          - "-Xms1024m"
+          - "-Xmx1024m"
+          - "-Dloader.path=/opt/qiyuesuo/libs"
+          - "-XX:+PrintGCDetails"
+          - "-Xloggc:/opt/qiyuesuo/logs/gc/privoss.log"
+          - "-XX:+PrintGCDateStamps"
+          - "-XX:-OmitStackTraceInFastThrow"
+          - "-Djava.security.egd=file:/dev/./urandom"
+          - "-Dspring.profiles.active=production"
+          - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
+          - "-Dqiyuesuo.cluster.members=127.0.0.1"
+          - "-jar"
+          - "/opt/qiyuesuo/privoss.jar"
         ports:
         - containerPort: 5701
         - containerPort: 9180

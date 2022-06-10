@@ -33,7 +33,13 @@ az acr check-health --name qiyuesuo.azurecr.io --ignore-errors --yes
 
 # cmd
 
-java -Xms512m -Xmx768m -XX:+PrintGCDetails -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -XX:+PrintGCDateStamps -XX:-OmitStackTraceInFastThrow -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -Dqiyuesuo.logdir=/opt/qiyuesuo/logs -Dqiyuesuo.cluster.members=127.0.0.1 -jar /opt/qiyuesuo/privoss.jar
+CMD ["java", "-Dloader.path=/app/libs", "-jar", "run.jar"]
+
+java -Xms512m -Xmx768m -Dloader.path=/opt/qiyuesuo/libs -XX:+PrintGCDetails -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -XX:+PrintGCDateStamps -XX:-OmitStackTraceInFastThrow -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -Dqiyuesuo.logdir=/opt/qiyuesuo/logs -Dqiyuesuo.cluster.members=127.0.0.1 -jar /opt/qiyuesuo/privoss.jar
+
+java -Xms1024m -Xmx1024m -Dloader.path=/opt/qiyuesuo/libs -XX:+PrintGCDetails -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -XX:+PrintGCDateStamps -XX:-OmitStackTraceInFastThrow -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -Dqiyuesuo.logdir=/opt/qiyuesuo/logs -Dqiyuesuo.cluster.members=127.0.0.1 -jar /opt/qiyuesuo/privoss.jar
+
+java -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -Dspring.profiles.active=production -Dqiyuesuo.logdir=/opt/qiyuesuo/logs -Dqiyuesuo.cluster.members=127.0.0.1 -jar /opt/qiyuesuo/privoss.jar
 
 # test
 

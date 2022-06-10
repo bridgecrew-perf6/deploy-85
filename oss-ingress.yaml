@@ -13,4 +13,4 @@ spec:
             service:
               name: oss-service
               port:
-                number: 9081
+                number: 9181

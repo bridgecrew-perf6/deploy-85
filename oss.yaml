@@ -14,11 +14,12 @@ spec:
     spec:
       containers:
       - name: qiyuesuo-container
-        image: echopdevecwur.azurecr.cn/single:latest
+        imagePullPolicy: Always
+        image: echopdevecwur.azurecr.cn/qiyuesuo:latest
         command: ["java"]
         args:
-          - "-Xms1024m"
-          - "-Xmx1024m"
+          - "-Xms2048m"
+          - "-Xmx2048m"
           - "-Dloader.path=/opt/qiyuesuo/libs"
           - "-XX:+PrintGCDetails"
           - "-Xloggc:/opt/qiyuesuo/logs/gc/privoss.log"
@@ -30,6 +31,10 @@ spec:
           - "-Dqiyuesuo.cluster.members=127.0.0.1"
           - "-jar"
           - "/opt/qiyuesuo/privoss.jar"
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2000m"
         ports:
         - containerPort: 5701
         - containerPort: 9180

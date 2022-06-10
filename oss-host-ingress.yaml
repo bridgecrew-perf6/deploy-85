@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: oss-ingress
 spec:
-  ingressClassName: private
+  ingressClassName: public
   rules:
     - host: oss.echopdev.echop-dev.azurechina.cloud.bmw
       http:

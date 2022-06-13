@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nacos-ingress
+spec:
+  ingressClassName: public
+  rules:
+    - host: nacos.echop-dev.azurechina.cloud.bmw
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: nacos-headless
+                port:
+                  number: 8848
+

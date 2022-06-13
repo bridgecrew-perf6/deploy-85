@@ -19,9 +19,7 @@ az acr login --name echopdevecwur.azurecr.cn
 ```
 docker build -t echopdevecwur.azurecr.cn/qiyuesuo ./
 docker build -t echopdevecwur.azurecr.cn/qiyuesuo -f Dockerfile ./
-docker build -t qiyuesuo.azurecr.io/single -f single-Dockerfile ./
 docker push echopdevecwur.azurecr.cn/qiyuesuo
-docker push qiyuesuo.azurecr.io/single
 ```
 
 # deploy

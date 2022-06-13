@@ -32,6 +32,7 @@ kubectl delete -f oss.yaml --namespace bmw
 # ingress
 ```
 kubectl apply -f oss-ingress.yaml --namespace bmw
+kubectl apply -f oss-host-ingress.yaml --namespace bmw
 kubectl get ingress -n bmw
 ```
 

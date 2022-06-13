@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc-standard-xfs-ssd-resizable
+  name: config-pvc
 spec:
   accessModes:
     - ReadWriteOnce

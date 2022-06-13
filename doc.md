@@ -27,6 +27,7 @@ docker push qiyuesuo.azurecr.io/single
 ```
 kubectl apply -f oss.yaml --namespace bmw
 kubectl delete -f oss.yaml --namespace bmw
+kubectl apply -f nacos-mysql.yaml -n bmw
 ```
 
 # ingress

@@ -43,10 +43,16 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /opt/qiyuesuo/config/
+        - name: log-volume
+          mountPath: /opt/qiyuesuo/logs/
       volumes:
         - name: config-volume
           persistentVolumeClaim:
             claimName: config-pvc
+            readOnly: false
+        - name: log-volume
+          persistentVolumeClaim:
+            claimName: log-pvc
             readOnly: false
 ---
 apiVersion: v1

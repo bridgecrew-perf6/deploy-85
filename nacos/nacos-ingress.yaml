@@ -5,10 +5,10 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - host: open.echop-dev.azurechina.cloud.bmw
+    - host: oss.echop-dev.azurechina.cloud.bmw
       http:
         paths:
-          - path: /
+          - path: /nacos/
             pathType: ImplementationSpecific
             backend:
               service:

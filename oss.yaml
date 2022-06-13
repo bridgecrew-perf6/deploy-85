@@ -50,15 +50,19 @@ spec:
     app: oss-pod
   type: ClusterIP
   ports:
-  - port: 5701
-    name: hazelcast
+  - name: hazelcast
+    protocol: TCP
+    port: 5701
     targetPort: 5701
-  - port: 9180
-    name: open
+  - name: app
+    protocol: TCP
+    port: 9180
     targetPort: 9180
-  - port: 9181
-    name: oss
+  - name: oss
+    protocol: TCP
+    port: 9181
     targetPort: 9181
-  - port: 9182
-    name: sign
+  - name: open
+    protocol: TCP
+    port: 9182
     targetPort: 9182

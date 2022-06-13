@@ -5,8 +5,7 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    # - host: oss.echop-dev.azurechina.cloud.bmw
-    - host: oss.pudbot.com
+    - host: oss.echop-dev.azurechina.cloud.bmw
       http:
         paths:
           - path: /

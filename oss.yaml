@@ -40,6 +40,14 @@ spec:
         - containerPort: 9180
         - containerPort: 9181
         - containerPort: 9182
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/qiyuesuo/config/
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-pvc
+            readOnly: false
 ---
 apiVersion: v1
 kind: Service

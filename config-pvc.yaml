@@ -4,7 +4,7 @@ metadata:
   name: config-pvc
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: "standard-xfs-ssd-resizable"
   resources:
     requests:

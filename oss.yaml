@@ -48,7 +48,7 @@ spec:
       volumes:
         - name: license-volume
           persistentVolumeClaim:
-            claimName: config-pvc
+            claimName: license-pvc
             readOnly: false
         - name: log-volume
           persistentVolumeClaim:

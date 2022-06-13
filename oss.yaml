@@ -46,9 +46,11 @@ kind: Service
 metadata:
   name: oss-service  
 spec:
+  type: LoadBalancer
+  # type: ClusterIP
+  externalTrafficPolicy: Local
   selector:
     app: oss-pod
-  type: ClusterIP
   ports:
   - name: hazelcast
     protocol: TCP

@@ -4,8 +4,8 @@ metadata:
   name: config-pvc
 spec:
   accessModes:
-    - ReadOnlyMany
-  storageClassName: "standard-xfs-ssd-resizable"
+    - ReadWriteMany
+  storageClassName: "azurefile"
   resources:
     requests:
       storage: 1Gi

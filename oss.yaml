@@ -37,7 +37,7 @@ spec:
            configMapKeyRef:
               name: cm
               key: qiyuesuo.db.itemchek
-        - name: QIYUESUO_DB_ITEMCHEK
+        - name: QIYUESUO_SETUP
           valueFrom:
            configMapKeyRef:
               name: cm

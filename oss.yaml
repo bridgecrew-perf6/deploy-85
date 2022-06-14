@@ -31,7 +31,7 @@ spec:
           - "-Dqiyuesuo.cluster.members=127.0.0.1"
           - "-jar"
           - "/opt/qiyuesuo/privoss.jar"
-      - env:
+        env:
         - name: QIYUESUO_DB_ITEMCHEK
           valueFrom:
            configMapKeyRef:

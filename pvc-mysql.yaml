@@ -8,4 +8,4 @@ spec:
   storageClassName: "standard-xfs-ssd-resizable"
   resources:
     requests:
-      storage: 512Gi
+      storage: 1024Gi

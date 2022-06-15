@@ -1,0 +1,120 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-pod
+  template:
+    metadata:
+      labels:
+        app: open-pod
+    spec:
+      containers:
+      - name: open-container
+        imagePullPolicy: Always
+        image: echopdevecwur.azurecr.cn/qiyuesuo:latest
+        command: ["java"]
+        args:
+          - "-Xms2048m"
+          - "-Xmx2048m"
+          - "-Dloader.path=/opt/qiyuesuo/libs"
+          - "-XX:+PrintGCDetails"
+          - "-Xloggc:/opt/qiyuesuo/logs/gc/privopen.log"
+          - "-XX:+PrintGCDateStamps"
+          - "-XX:-OmitStackTraceInFastThrow"
+          - "-Djava.security.egd=file:/dev/./urandom"
+          - "-Dspring.profiles.active=production"
+          - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
+          - "-Dqiyuesuo.cluster.members=oss-service"
+          - "-jar"
+          - "/opt/qiyuesuo/privopen.jar"
+        envFrom:
+        - configMapRef:
+            name: cm-default
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+           configMapKeyRef:
+              name: cm-open
+              key: server.port
+        - name: QIYUESUO_DB_ITEMCHEK
+          valueFrom:
+           configMapKeyRef:
+             name: cm-custom
+             key: qiyuesuo.db.itemchek
+        - name: QIYUESUO_LICENSE_FILE
+          valueFrom:
+           configMapKeyRef:
+             name: cm-custom
+             key: qiyuesuo.license.file
+        # - name: QIYUESUO_SETUP
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm
+              # key: qiyuesuo.setup
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2000m"
+        ports:
+        - containerPort: 5701
+        - containerPort: 9180
+        - containerPort: 9181
+        - containerPort: 9182
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/qiyuesuo/config/
+        - name: license-volume
+          mountPath: /opt/qiyuesuo/license/
+        - name: log-volume
+          mountPath: /opt/qiyuesuo/logs/
+        - name: data-volume
+          mountPath: /opt/qiyuesuo/data/
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-pvc
+            readOnly: false
+        - name: license-volume
+          persistentVolumeClaim:
+            claimName: license-pvc
+            readOnly: false
+        - name: log-volume
+          persistentVolumeClaim:
+            claimName: log-pvc
+            readOnly: false
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: data-pvc
+            readOnly: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-service  
+spec:
+  type: LoadBalancer
+  # type: ClusterIP
+  externalTrafficPolicy: Local
+  selector:
+    app: open-pod
+  ports:
+  - name: hazelcast
+    protocol: TCP
+    port: 5701
+    targetPort: 5701
+  - name: app
+    protocol: TCP
+    port: 9180
+    targetPort: 9180
+  - name: oss
+    protocol: TCP
+    port: 9181
+    targetPort: 9181
+  - name: open
+    protocol: TCP
+    port: 9182
+    targetPort: 9182

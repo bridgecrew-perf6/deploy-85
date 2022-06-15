@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: mysql
 spec:
+  type: LoadBalancer
+  # type: ClusterIP
+  externalTrafficPolicy: Local
   ports:
   - port: 3306
   selector:

@@ -1,0 +1,11 @@
+apirsion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "azurefile"
+  resources:
+    requests:
+      storage: 1Gi

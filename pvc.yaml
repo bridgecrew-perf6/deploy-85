@@ -1,9 +1,7 @@
-# example-pvc-azurefile.yaml
- 
-apiVersion: v1
+apirsion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc-azurefile
+  name: config-pvc
 spec:
   accessModes:
     - ReadWriteMany
@@ -11,67 +9,51 @@ spec:
   resources:
     requests:
       storage: 1Gi
- 
 ---
- 
-# example-pvc-standard-ext4-hdd-resizable.yaml
- 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc-standard-ext4-hdd-resizable
+  name: license-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: "standard-ext4-hdd-resizable"
+    - ReadWriteMany
+  storageClassName: "azurefile"
   resources:
     requests:
-      storage: 5Gi
- 
+      storage: 1Gi
 ---
- 
-# example-pvc-standard-ext4-ssd-resizable.yaml
- 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc-standard-ext4-ssd-resizable
+  name: log-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: "standard-ext4-ssd-resizable"
+    - ReadWriteMany
+  storageClassName: "azurefile"
   resources:
     requests:
-      storage: 6Gi
- 
+      storage: 1024Gi
 ---
- 
-# example-pvc-standard-xfs-hdd-resizable.yaml
- 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc-standard-xfs-hdd-resizable
+  name: data-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: "standard-xfs-hdd-resizable"
+    - ReadWriteMany
+  storageClassName: "azurefile"
   resources:
     requests:
-      storage: 8Gi
- 
+      storage: 1024Gi
 ---
- 
-# example-pvc-standard-xfs-ssd-resizable.yaml
- 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: example-pvc-standard-xfs-ssd-resizable
+  name: mysql-pv-claim
 spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: "standard-xfs-ssd-resizable"
   resources:
     requests:
-      storage: 9Gi
+      storage: 1024Gi

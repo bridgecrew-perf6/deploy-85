@@ -1,0 +1,77 @@
+# example-pvc-azurefile.yaml
+ 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc-azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "azurefile"
+  resources:
+    requests:
+      storage: 1Gi
+ 
+---
+ 
+# example-pvc-standard-ext4-hdd-resizable.yaml
+ 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc-standard-ext4-hdd-resizable
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "standard-ext4-hdd-resizable"
+  resources:
+    requests:
+      storage: 5Gi
+ 
+---
+ 
+# example-pvc-standard-ext4-ssd-resizable.yaml
+ 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc-standard-ext4-ssd-resizable
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "standard-ext4-ssd-resizable"
+  resources:
+    requests:
+      storage: 6Gi
+ 
+---
+ 
+# example-pvc-standard-xfs-hdd-resizable.yaml
+ 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc-standard-xfs-hdd-resizable
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "standard-xfs-hdd-resizable"
+  resources:
+    requests:
+      storage: 8Gi
+ 
+---
+ 
+# example-pvc-standard-xfs-ssd-resizable.yaml
+ 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc-standard-xfs-ssd-resizable
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "standard-xfs-ssd-resizable"
+  resources:
+    requests:
+      storage: 9Gi

@@ -31,17 +31,20 @@ spec:
           - "-Dqiyuesuo.cluster.members=127.0.0.1"
           - "-jar"
           - "/opt/qiyuesuo/privoss.jar"
-        env:
-        - name: QIYUESUO_DB_ITEMCHEK
-          valueFrom:
-           configMapKeyRef:
-              name: cm
-              key: qiyuesuo.db.itemchek
-        - name: QIYUESUO_SETUP
-          valueFrom:
-           configMapKeyRef:
-              name: cm
-              key: qiyuesuo.setup
+        envFrom:
+        - configMapRef:
+          name: cm-default
+        # env:
+        # - name: QIYUESUO_DB_ITEMCHEK
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm
+              # key: qiyuesuo.db.itemchek
+        # - name: QIYUESUO_SETUP
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm
+              # key: qiyuesuo.setup
         resources:
           requests:
             memory: "4Gi"
@@ -52,11 +55,17 @@ spec:
         - containerPort: 9181
         - containerPort: 9182
         volumeMounts:
+        - name: config-volume
+          mountPath: /opt/qiyuesuo/config/
         - name: license-volume
           mountPath: /opt/qiyuesuo/license/
         - name: log-volume
           mountPath: /opt/qiyuesuo/logs/
       volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-pvc
+            readOnly: false
         - name: license-volume
           persistentVolumeClaim:
             claimName: license-pvc

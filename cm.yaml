@@ -17,17 +17,17 @@ metadata:
   name: cm-oss
 data:
   server.port: "9181"
-# ---
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-  # name: cm-app
-# data:
-  # server.port: 9180
-# ---
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-  # name: cm-open
-# data:
-  # server.port: 9182
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-app
+data:
+  server.port: 9180
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-open
+data:
+  server.port: 9182

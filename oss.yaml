@@ -18,6 +18,7 @@ spec:
         image: echopdevecwur.azurecr.cn/qiyuesuo:latest
         command: ["java"]
         args:
+          - "-dserver.port=9181"
           - "-Xms2048m"
           - "-Xmx2048m"
           - "-Dloader.path=/opt/qiyuesuo/libs"
@@ -35,6 +36,11 @@ spec:
         - configMapRef:
           name: cm-default
         # env:
+        # - name: SERVER_PORT
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm-oss
+              # key: server.port
         # - name: QIYUESUO_DB_ITEMCHEK
           # valueFrom:
            # configMapKeyRef:

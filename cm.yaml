@@ -23,11 +23,11 @@ kind: ConfigMap
 metadata:
   name: cm-app
 data:
-  server.port: 9180
+  server.port: "9180"
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-open
 data:
-  server.port: 9182
+  server.port: "9182"

@@ -26,6 +26,7 @@ docker push echopdevecwur.azurecr.cn/qiyuesuo
 ```
 kubectl create configmap cm-default --from-env-file=application.properties --namespace bmw
 kubectl create configmap cm-default --from-file=application.properties --namespace bmw
+kubectl delete configmap cm-default --namespace bmw
 ```
 
 # deploy

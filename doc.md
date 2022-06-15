@@ -22,6 +22,11 @@ docker build -t echopdevecwur.azurecr.cn/qiyuesuo -f Dockerfile ./
 docker push echopdevecwur.azurecr.cn/qiyuesuo
 ```
 
+# config map 
+```
+kubectl create configmap cm-default --from-env-file=application.properties --namespace bmw
+```
+
 # deploy
 ```
 kubectl apply -f oss.yaml --namespace bmw

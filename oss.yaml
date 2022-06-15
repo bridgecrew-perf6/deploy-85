@@ -18,7 +18,7 @@ spec:
         image: echopdevecwur.azurecr.cn/qiyuesuo:latest
         command: ["java"]
         args:
-          - "-dserver.port=9181"
+          - "--server.port=9181"
           - "-Xms2048m"
           - "-Xmx2048m"
           - "-Dloader.path=/opt/qiyuesuo/libs"
@@ -44,13 +44,13 @@ spec:
         - name: QIYUESUO_DB_ITEMCHEK
           valueFrom:
            configMapKeyRef:
-              name: cm-custom
-              key: qiyuesuo.db.itemchek
+             name: cm-custom
+             key: qiyuesuo.db.itemchek
         - name: QIYUESUO_LICENSE_FILE
           valueFrom:
            configMapKeyRef:
-              name: cm-custom
-              key: qiyuesuo.license.file
+             name: cm-custom
+             key: qiyuesuo.license.file
         # - name: QIYUESUO_SETUP
           # valueFrom:
            # configMapKeyRef:

@@ -34,22 +34,24 @@ spec:
         envFrom:
         - configMapRef:
             name: cm-default
-        env:
-        - name: SERVER_PORT
-          valueFrom:
-           configMapKeyRef:
-              name: cm-open
-              key: server.port
-        - name: QIYUESUO_DB_ITEMCHEK
-          valueFrom:
-           configMapKeyRef:
-             name: cm-custom
-             key: qiyuesuo.db.itemchek
-        - name: QIYUESUO_LICENSE_FILE
-          valueFrom:
-           configMapKeyRef:
-             name: cm-custom
-             key: qiyuesuo.license.file
+        - configMapRef:
+            name: cm-open
+        # env:
+        # - name: SERVER_PORT
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm-open
+              # key: server.port
+        # - name: QIYUESUO_DB_ITEMCHEK
+          # valueFrom:
+           # configMapKeyRef:
+             # name: cm-custom
+             # key: qiyuesuo.db.itemchek
+        # - name: QIYUESUO_LICENSE_FILE
+          # valueFrom:
+           # configMapKeyRef:
+             # name: cm-custom
+             # key: qiyuesuo.license.file
         # - name: QIYUESUO_SETUP
           # valueFrom:
            # configMapKeyRef:

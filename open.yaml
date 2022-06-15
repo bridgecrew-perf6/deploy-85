@@ -35,6 +35,8 @@ spec:
         - configMapRef:
             name: cm-default
         - configMapRef:
+            name: cm-custom
+        - configMapRef:
             name: cm-open
         # env:
         # - name: SERVER_PORT

@@ -34,7 +34,7 @@ spec:
           - "/opt/qiyuesuo/privoss.jar"
         envFrom:
         - configMapRef:
-          name: cm-default
+            name: cm-default
         env:
         # - name: SERVER_PORT
           # valueFrom:

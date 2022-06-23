@@ -90,7 +90,7 @@ spec:
     protocol: TCP
     port: 9180
     targetPort: 9180
-  - name: hazelcast
+  - name: oss
     protocol: TCP
     port: 9181
     targetPort: 9181

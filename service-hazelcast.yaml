@@ -28,8 +28,7 @@ spec:
           - "-Djava.security.egd=file:/dev/./urandom"
           # - "-Dspring.profiles.active=production"
           - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
-          # - "-DeurekaServer=http://eureka:8761/eureka"
-          - "-DeurekaServer=$EUREKA_SERVER_ADDRESS"
+          - "-DeurekaServer=http://eureka:8761/eureka"
           - "-jar"
           - "/opt/qiyuesuo/hazelcast.jar"
         envFrom:

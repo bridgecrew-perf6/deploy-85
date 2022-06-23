@@ -25,12 +25,7 @@ docker push echopdevecwur.azurecr.cn/qiyuesuo
 docker build -t jinxiaolu/hazelcast ./
 docker push jinxiaolu/hazelcast
 docker pull jinxiaolu/hazelcast
-docker service rm hazelcast && \
-docker service create \
---replicas 2 \
--p 5701:5701 \
---name hazelcast \
-jinxiaolu/hazelcast
+docker tag jinxiaolu/hazelcast echopdevecwur.azurecr.cn/hazelcast
 ```
 
 # config map 

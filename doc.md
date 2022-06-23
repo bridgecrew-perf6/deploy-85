@@ -26,6 +26,7 @@ docker build -t jinxiaolu/hazelcast ./
 docker push jinxiaolu/hazelcast
 docker pull jinxiaolu/hazelcast
 docker tag jinxiaolu/hazelcast echopdevecwur.azurecr.cn/hazelcast
+docker push echopdevecwur.azurecr.cn/hazelcast
 ```
 
 # config map 

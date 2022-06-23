@@ -65,6 +65,8 @@ java -Xms1024m -Xmx1024m -Dloader.path=/opt/qiyuesuo/libs -XX:+PrintGCDetails -X
 
 java -Xms1024m -Xmx1024m -Dloader.path=/opt/qiyuesuo/libs -XX:+PrintGCDetails -Xloggc:/opt/qiyuesuo/logs/gc/privoss.log -XX:+PrintGCDateStamps -XX:-OmitStackTraceInFastThrow -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=production -Dqiyuesuo.logdir=/opt/qiyuesuo/logs -Dqiyuesuo.cluster.members=127.0.0.1 -jar /opt/qiyuesuo/privoss.jar
 
+java -Dspring.profiles.active=production -Dqiyuesuo.logdir=./logs -DeurekaServer=http://192.168.62.16:7000/eureka/ -jar ./target/middleware.jar
+
 # test
 
 eocker run --name qiyuesuo -itd qiyuesuo.azurecr.io/single bash
@@ -72,5 +74,6 @@ docker exec -it qiyuesuo /bin/bash
 
 kubectl exec -it -n bmw oss-pod -- /bin/bash
 
+kubectl logs -f -n bmw <pod-id> -c istio-initcp
 	
 curl http://10.86.26.134 -H "X-Forwarded-For: 1.1.1.1" -H "Host: oss.echopdev.echop-dev.azurechina.cloud.bmw"

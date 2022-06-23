@@ -32,11 +32,9 @@ spec:
           - "/opt/qiyuesuo/hazelcast.jar"
         envFrom:
         - configMapRef:
-            name: cm-default
-        - configMapRef:
-            name: cm-custom
-        - configMapRef:
             name: cm-hazelcast
+        - configMapRef:
+            name: cm-eureka
         # env:
         # - name: SERVER_PORT
           # valueFrom:

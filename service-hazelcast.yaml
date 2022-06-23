@@ -29,7 +29,7 @@ spec:
           # - "-Dspring.profiles.active=production"
           - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
           # - "-DeurekaServer=http://eureka:8761/eureka"
-          - "-DeurekaServer=http://eureka-0.eureka.bmw.svc.cluster.local:eureka:8761/eureka,http://eureka-1.eureka.bmw.svc.cluster.local:eureka:8761/eureka,http://eureka-2.eureka.bmw.svc.cluster.local:eureka:8761/eureka"
+          - "-DeurekaServer=$EUREKA_SERVER_ADDRESS"
           - "-jar"
           - "/opt/qiyuesuo/hazelcast.jar"
         envFrom:

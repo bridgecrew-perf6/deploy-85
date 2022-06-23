@@ -35,31 +35,10 @@ spec:
             name: cm-hazelcast
         - configMapRef:
             name: cm-eureka
-        # env:
-        # - name: SERVER_PORT
-          # valueFrom:
-           # configMapKeyRef:
-              # name: cm-hazelcast
-              # key: server.port
-        # - name: QIYUESUO_DB_ITEMCHEK
-          # valueFrom:
-           # configMapKeyRef:
-             # name: cm-custom
-             # key: qiyuesuo.db.itemchek
-        # - name: QIYUESUO_LICENSE_FILE
-          # valueFrom:
-           # configMapKeyRef:
-             # name: cm-custom
-             # key: qiyuesuo.license.file
-        # - name: QIYUESUO_SETUP
-          # valueFrom:
-           # configMapKeyRef:
-              # name: cm
-              # key: qiyuesuo.setup
         resources:
           requests:
-            memory: "4Gi"
-            cpu: "2000m"
+            memory: "2Gi"
+            cpu: "1000m"
         ports:
         - containerPort: 5701
         - containerPort: 9180

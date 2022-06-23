@@ -20,6 +20,17 @@ az acr login --name echopdevecwur.azurecr.cn
 docker build -t echopdevecwur.azurecr.cn/qiyuesuo ./
 docker build -t echopdevecwur.azurecr.cn/qiyuesuo -f Dockerfile ./
 docker push echopdevecwur.azurecr.cn/qiyuesuo
+
+
+docker build -t jinxiaolu/hazelcast ./
+docker push jinxiaolu/hazelcast
+docker pull jinxiaolu/hazelcast
+docker service rm hazelcast && \
+docker service create \
+--replicas 2 \
+-p 5701:5701 \
+--name hazelcast \
+jinxiaolu/hazelcast
 ```
 
 # config map 

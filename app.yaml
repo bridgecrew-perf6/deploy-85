@@ -18,8 +18,8 @@ spec:
         image: echopdevecwur.azurecr.cn/qiyuesuo:latest
         command: ["java"]
         args:
-          - "-Xms2048m"
-          - "-Xmx2048m"
+          - "-Xms1024m"
+          - "-Xmx1024m"
           - "-Dloader.path=/opt/qiyuesuo/libs"
           - "-XX:+PrintGCDetails"
           - "-Xloggc:/opt/qiyuesuo/logs/gc/privapp.log"

@@ -20,8 +20,11 @@ az acr login --name echopdevecwur.azurecr.cn
 docker build -t echopdevecwur.azurecr.cn/qiyuesuo ./
 docker build -t echopdevecwur.azurecr.cn/qiyuesuo -f Dockerfile ./
 docker push echopdevecwur.azurecr.cn/qiyuesuo
+```
 
-
+* hazelcast
+```
+mvn package
 docker build -t jinxiaolu/hazelcast ./
 docker push jinxiaolu/hazelcast
 docker pull jinxiaolu/hazelcast

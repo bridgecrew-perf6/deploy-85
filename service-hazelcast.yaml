@@ -45,44 +45,15 @@ spec:
             cpu: "1000m"
         ports:
         - containerPort: 5701
-        - containerPort: 9180
-        - containerPort: 9181
-        - containerPort: 9182
-        volumeMounts:
-        - name: config-volume
-          mountPath: /opt/qiyuesuo/config/
-        - name: license-volume
-          mountPath: /opt/qiyuesuo/license/
-        - name: log-volume
-          mountPath: /opt/qiyuesuo/logs/
-        - name: data-volume
-          mountPath: /opt/qiyuesuo/data/
-      volumes:
-        - name: config-volume
-          persistentVolumeClaim:
-            claimName: config-pvc
-            readOnly: false
-        - name: license-volume
-          persistentVolumeClaim:
-            claimName: license-pvc
-            readOnly: false
-        - name: log-volume
-          persistentVolumeClaim:
-            claimName: log-pvc
-            readOnly: false
-        - name: data-volume
-          persistentVolumeClaim:
-            claimName: data-pvc
-            readOnly: false
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: hazelcast-service  
 spec:
-  type: LoadBalancer
-  # type: ClusterIP
-  externalTrafficPolicy: Local
+  # type: LoadBalancer
+  # externalTrafficPolicy: Local
+  type: ClusterIP
   selector:
     app: hazelcast-pod
   ports:
@@ -90,15 +61,3 @@ spec:
     protocol: TCP
     port: 5701
     targetPort: 5701
-  - name: app
-    protocol: TCP
-    port: 9180
-    targetPort: 9180
-  - name: oss
-    protocol: TCP
-    port: 9181
-    targetPort: 9181
-  - name: open
-    protocol: TCP
-    port: 9182
-    targetPort: 9182

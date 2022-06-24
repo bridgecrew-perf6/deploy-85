@@ -45,15 +45,3 @@ spec:
   resources:
     requests:
       storage: 1024Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pv-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: "standard-xfs-ssd-resizable"
-  resources:
-    requests:
-      storage: 1024Gi

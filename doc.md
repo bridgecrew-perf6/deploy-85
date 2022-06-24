@@ -5,7 +5,7 @@ https://docs.microsoft.com/en-us/azure/aks/ingress-basic?tabs=azure-cli
 
 # download
 ```
-curl -o qiyuesuo.package.BJBMW.20220623.tar.gz https://qiyuesuo-plm.obs.cn-east-3.myhuaweicloud.com:443/projects/BJBMW/qiyuesuo.package.BJBMW.20220623.tar.gz?AccessKeyId=JHII6IQQ9JLKYP5SGBVO&Expires=1655974908&Signature=FKoq6cT9cbEKz3XTi7PYVZCPKos%3D
+curl -o qiyuesuo.package.BJBMW.20220623.tar.gz https://qiyuesuo-plm.obs.cn-east-3.myhuaweicloud.com:443/projects/BJBMW/qiyuesuo.package.BJBMW.20220623.tar.gz?AccessKeyId=JHII6IQQ9JLKYP5SGBVO&Expires=1656065389&Signature=gin7jdAhQbnds3FMbyvvwWMV5AA%3D
 ```
 
 

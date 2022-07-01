@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: oss-np
   labels:
-    app: np
+    app: oss
 spec:
   type: NodePort
   ports:
@@ -22,7 +22,7 @@ metadata:
 spec:
   clusterIP: None
   ports:
-  - port: 8761
+  - port: 9181
     name: oss
   selector:
     app: oss
@@ -33,7 +33,8 @@ metadata:
   name: oss
 spec:
   serviceName: 'oss'
-  replicas: 2
+  # n instances
+  replicas: 1
   selector:
     matchLabels:
       app: oss
@@ -43,7 +44,7 @@ spec:
         app: oss
     spec:
       containers:
-      - name: oss-container
+      - name: oss
         imagePullPolicy: Always
         image: echopdevecwur.azurecr.cn/qiyuesuo:latest
         command: ["java"]
@@ -73,10 +74,7 @@ spec:
             memory: "2Gi"
             cpu: "1000m"
         ports:
-        - containerPort: 5701
-        - containerPort: 9180
         - containerPort: 9181
-        - containerPort: 9182
         volumeMounts:
         - name: config-volume
           mountPath: /opt/qiyuesuo/config/

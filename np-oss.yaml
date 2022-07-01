@@ -1,3 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oss-np
+  labels:
+    app: oss-np
+spec:
+  type: NodePort
+  ports:
+  - port: 9181
+    nodePort: 30081
+    name: oss-port
+  selector:
+    app: oss-deployment 
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -80,31 +95,3 @@ spec:
           persistentVolumeClaim:
             claimName: data-pvc
             readOnly: false
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: oss-service  
-spec:
-  type: LoadBalancer
-  # type: ClusterIP
-  externalTrafficPolicy: Local
-  selector:
-    app: oss-pod
-  ports:
-  - name: hazelcast
-    protocol: TCP
-    port: 5701
-    targetPort: 5701
-  - name: app
-    protocol: TCP
-    port: 9180
-    targetPort: 9180
-  - name: oss
-    protocol: TCP
-    port: 9181
-    targetPort: 9181
-  - name: open
-    protocol: TCP
-    port: 9182
-    targetPort: 9182

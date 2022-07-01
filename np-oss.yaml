@@ -13,6 +13,20 @@ spec:
   selector:
     app: oss-deployment 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oss-service
+  labels:
+    app: oss-service
+spec:
+  clusterIP: None
+  ports:
+  - port: 9181
+    name: oss-port
+  selector:
+    app: oss-deployment
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

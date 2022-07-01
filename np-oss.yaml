@@ -3,29 +3,29 @@ kind: Service
 metadata:
   name: oss-np
   labels:
-    app: oss-np
+    app: oss
 spec:
   type: NodePort
   ports:
   - port: 9181
     # nodePort: 39181
-    name: oss-port
+    name: oss
   selector:
     app: oss-deployment 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: oss-service
+  name: oss
   labels:
-    app: oss-service
+    app: oss
 spec:
   clusterIP: None
   ports:
   - port: 9181
-    name: oss-port
+    name: oss
   selector:
-    app: oss-deployment
+    app: oss-deployment 
 ---
 apiVersion: apps/v1
 kind: Deployment

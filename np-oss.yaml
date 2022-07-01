@@ -34,7 +34,7 @@ metadata:
 spec:
   serviceName: 'oss'
   # n instances
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: oss

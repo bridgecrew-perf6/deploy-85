@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
   - port: 9181
-    # nodePort: 39181
+    # nodePort: 30030
     name: oss
   selector:
     app: oss
@@ -33,6 +33,7 @@ metadata:
   name: oss
 spec:
   serviceName: 'oss'
+  # n instances
   replicas: 2
   selector:
     matchLabels:
@@ -43,47 +44,16 @@ spec:
         app: oss
     spec:
       containers:
-      - name: oss-container
-        imagePullPolicy: Always
+      - name: oss
         image: echopdevecwur.azurecr.cn/qiyuesuo:latest
-        command: ["java"]
-        args:
-          - "-Xms1024m"
-          - "-Xmx1024m"
-          - "-Dloader.path=/opt/qiyuesuo/libs"
-          - "-XX:+PrintGCDetails"
-          - "-Xloggc:/opt/qiyuesuo/logs/gc/privoss.log"
-          - "-XX:+PrintGCDateStamps"
-          - "-XX:-OmitStackTraceInFastThrow"
-          - "-Djava.security.egd=file:/dev/./urandom"
-          - "-Dspring.profiles.active=production"
-          - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
-          - "-Dqiyuesuo.cluster.members=127.0.0.1"
-          - "-jar"
-          - "/opt/qiyuesuo/privoss.jar"
-        envFrom:
-        - configMapRef:
-            name: cm-default
-        - configMapRef:
-            name: cm-custom
-        - configMapRef:
-            name: cm-oss
-        # env:
-        # - name: "HTTP_PROXY"
-        #   value: "http://10.82.68.134:8080"
-        # - name: "HTTPS_PROXY"
-        #   value: "http://10.82.68.134:8080"
-        # - name: "NO_PROXY"
-        #   value: "svc,local"
+        ports:
+        - containerPort: 9181
         resources:
           requests:
             memory: "2Gi"
             cpu: "1000m"
         ports:
-        - containerPort: 5701
-        - containerPort: 9180
         - containerPort: 9181
-        - containerPort: 9182
         volumeMounts:
         - name: config-volume
           mountPath: /opt/qiyuesuo/config/

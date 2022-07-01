@@ -45,9 +45,30 @@ spec:
     spec:
       containers:
       - name: oss
+        imagePullPolicy: Always
         image: echopdevecwur.azurecr.cn/qiyuesuo:latest
-        ports:
-        - containerPort: 9181
+        command: ["java"]
+        args:
+          - "-Xms1024m"
+          - "-Xmx1024m"
+          - "-Dloader.path=/opt/qiyuesuo/libs"
+          - "-XX:+PrintGCDetails"
+          - "-Xloggc:/opt/qiyuesuo/logs/gc/privoss.log"
+          - "-XX:+PrintGCDateStamps"
+          - "-XX:-OmitStackTraceInFastThrow"
+          - "-Djava.security.egd=file:/dev/./urandom"
+          - "-Dspring.profiles.active=production"
+          - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
+          - "-Dqiyuesuo.cluster.members=127.0.0.1"
+          - "-jar"
+          - "/opt/qiyuesuo/privoss.jar"
+        envFrom:
+        - configMapRef:
+            name: cm-default
+        - configMapRef:
+            name: cm-custom
+        - configMapRef:
+            name: cm-oss
         resources:
           requests:
             memory: "2Gi"

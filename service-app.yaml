@@ -38,6 +38,13 @@ spec:
             name: cm-custom
         - configMapRef:
             name: cm-app
+        env:
+        - name: "HTTP_PROXY"
+          value: "http://10.82.68.134:8080"
+        - name: "HTTPS_PROXY"
+          value: "http://10.82.68.134:8080"
+        - name: "NO_PROXY"
+          value: "svc,local"
         resources:
           requests:
             memory: "2Gi"

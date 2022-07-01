@@ -45,27 +45,6 @@ spec:
         #   value: "http://10.82.68.134:8080"
         # - name: "NO_PROXY"
         #   value: "svc,local"
-        # env:
-        # - name: SERVER_PORT
-          # valueFrom:
-           # configMapKeyRef:
-              # name: cm-oss
-              # key: server.port
-        # - name: QIYUESUO_DB_ITEMCHEK
-          # valueFrom:
-           # configMapKeyRef:
-             # name: cm-custom
-             # key: qiyuesuo.db.itemchek
-        # - name: QIYUESUO_LICENSE_FILE
-          # valueFrom:
-           # configMapKeyRef:
-             # name: cm-custom
-             # key: qiyuesuo.license.file
-        # - name: QIYUESUO_SETUP
-          # valueFrom:
-           # configMapKeyRef:
-              # name: cm
-              # key: qiyuesuo.setup
         resources:
           requests:
             memory: "2Gi"

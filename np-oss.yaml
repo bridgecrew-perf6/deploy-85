@@ -1,0 +1,131 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oss-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: oss-pod
+  template:
+    metadata:
+      labels:
+        app: oss-pod
+    spec:
+      containers:
+      - name: oss-container
+        imagePullPolicy: Always
+        image: echopdevecwur.azurecr.cn/qiyuesuo:latest
+        command: ["java"]
+        args:
+          - "-Xms1024m"
+          - "-Xmx1024m"
+          - "-Dloader.path=/opt/qiyuesuo/libs"
+          - "-XX:+PrintGCDetails"
+          - "-Xloggc:/opt/qiyuesuo/logs/gc/privoss.log"
+          - "-XX:+PrintGCDateStamps"
+          - "-XX:-OmitStackTraceInFastThrow"
+          - "-Djava.security.egd=file:/dev/./urandom"
+          - "-Dspring.profiles.active=production"
+          - "-Dqiyuesuo.logdir=/opt/qiyuesuo/logs"
+          - "-Dqiyuesuo.cluster.members=127.0.0.1"
+          - "-jar"
+          - "/opt/qiyuesuo/privoss.jar"
+        envFrom:
+        - configMapRef:
+            name: cm-default
+        - configMapRef:
+            name: cm-custom
+        - configMapRef:
+            name: cm-oss
+        # env:
+        # - name: "HTTP_PROXY"
+        #   value: "http://10.82.68.134:8080"
+        # - name: "HTTPS_PROXY"
+        #   value: "http://10.82.68.134:8080"
+        # - name: "NO_PROXY"
+        #   value: "svc,local"
+        # env:
+        # - name: SERVER_PORT
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm-oss
+              # key: server.port
+        # - name: QIYUESUO_DB_ITEMCHEK
+          # valueFrom:
+           # configMapKeyRef:
+             # name: cm-custom
+             # key: qiyuesuo.db.itemchek
+        # - name: QIYUESUO_LICENSE_FILE
+          # valueFrom:
+           # configMapKeyRef:
+             # name: cm-custom
+             # key: qiyuesuo.license.file
+        # - name: QIYUESUO_SETUP
+          # valueFrom:
+           # configMapKeyRef:
+              # name: cm
+              # key: qiyuesuo.setup
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 5701
+        - containerPort: 9180
+        - containerPort: 9181
+        - containerPort: 9182
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/qiyuesuo/config/
+        - name: license-volume
+          mountPath: /opt/qiyuesuo/license/
+        - name: log-volume
+          mountPath: /opt/qiyuesuo/logs/
+        - name: data-volume
+          mountPath: /opt/qiyuesuo/data/
+      volumes:
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: config-pvc
+            readOnly: false
+        - name: license-volume
+          persistentVolumeClaim:
+            claimName: license-pvc
+            readOnly: false
+        - name: log-volume
+          persistentVolumeClaim:
+            claimName: log-pvc
+            readOnly: false
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: data-pvc
+            readOnly: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oss-service  
+spec:
+  type: LoadBalancer
+  # type: ClusterIP
+  externalTrafficPolicy: Local
+  selector:
+    app: oss-pod
+  ports:
+  - name: hazelcast
+    protocol: TCP
+    port: 5701
+    targetPort: 5701
+  - name: app
+    protocol: TCP
+    port: 9180
+    targetPort: 9180
+  - name: oss
+    protocol: TCP
+    port: 9181
+    targetPort: 9181
+  - name: open
+    protocol: TCP
+    port: 9182
+    targetPort: 9182

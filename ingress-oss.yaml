@@ -12,6 +12,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: oss-service
+                name: oss
                 port:
                   number: 9181
